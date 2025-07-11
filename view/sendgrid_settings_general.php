@@ -10,7 +10,7 @@
         <tr valign="top" class="apikey">
           <th scope="row"><?php _e("API Key: "); ?></th>
           <td>
-            <input type="password" id="sendgrid_general_apikey" name="sendgrid_apikey" class="sendgrid-settings-key" value="<?php echo ( $is_env_api_key ? "************" : $api_key );  ?>" <?php disabled( $is_env_api_key ); ?>>
+            <input type="password" id="sendgrid_general_apikey" name="sendgrid_apikey" class="sendgrid-settings-key" value="<?php echo ( $is_env_api_key ? "************" : esc_attr($api_key) );  ?>" <?php disabled( $is_env_api_key ); ?>>
           </td>
         </tr>
         <tr valign="top" class="send_method">
@@ -61,21 +61,21 @@
         <tr valign="top">
           <th scope="row"><?php _e("Name: "); ?></th>
           <td>
-            <input type="text" name="sendgrid_name" value="<?php echo $name; ?>" size="20" class="regular-text" <?php disabled( defined('SENDGRID_FROM_NAME') ); ?>>
+            <input type="text" name="sendgrid_name" value="<?php echo esc_attr($name); ?>" size="20" class="regular-text" <?php disabled( defined('SENDGRID_FROM_NAME') ); ?>>
             <p class="description"><?php _e('Name as it will appear in recipient clients.') ?></p>
           </td>
         </tr>
         <tr valign="top">
           <th scope="row"><?php _e("Sending Address: "); ?></th>
           <td>
-            <input type="text" name="sendgrid_email" value="<?php echo $email; ?>" size="20" class="regular-text" <?php disabled( defined('SENDGRID_FROM_EMAIL') ); ?>>
+            <input type="text" name="sendgrid_email" value="<?php echo esc_attr($email); ?>" size="20" class="regular-text" <?php disabled( defined('SENDGRID_FROM_EMAIL') ); ?>>
             <p class="description"><?php _e('Email address from which the message will be sent.') ?></p>
           </td>
         </tr>
         <tr valign="top">
           <th scope="row"><?php _e("Reply Address: "); ?></th>
           <td>
-            <input type="text" name="sendgrid_reply_to" value="<?php echo $reply_to; ?>" size="20" class="regular-text" <?php disabled( defined('SENDGRID_REPLY_TO') ); ?>>
+            <input type="text" name="sendgrid_reply_to" value="<?php echo esc_attr($reply_to); ?>" size="20" class="regular-text" <?php disabled( defined('SENDGRID_REPLY_TO') ); ?>>
             <span><small><em><?php _e('Leave blank to use Sending Address.') ?></em></small></span>
             <p class="description"><?php _e('Email address where replies will be returned.') ?></p>
           </td>
@@ -83,7 +83,7 @@
         <tr valign="top">
           <th scope="row"><?php _e("Categories: "); ?></th>
           <td>
-            <input type="text" name="sendgrid_categories" value="<?php echo $categories; ?>" size="20" class="regular-text" <?php disabled( defined('SENDGRID_CATEGORIES') ); ?>>
+            <input type="text" name="sendgrid_categories" value="<?php echo esc_attr($categories); ?>" size="20" class="regular-text" <?php disabled( defined('SENDGRID_CATEGORIES') ); ?>>
             <span><small><em><?php _e('Leave blank to send without categories.') ?></em></small></span>
             <p class="description"><?php _e('Associates the category of the email this should be logged as. <br />
             Categories must be separated by commas (Example: category1,category2).') ?></p>
@@ -92,7 +92,7 @@
         <tr valign="top">
           <th scope="row"><?php _e("Template: "); ?></th>
           <td>
-            <input type="text" name="sendgrid_template" value="<?php echo $template; ?>" size="20" class="regular-text" <?php disabled( defined('SENDGRID_TEMPLATE') ); ?>>
+            <input type="text" name="sendgrid_template" value="<?php echo esc_attr($template); ?>" size="20" class="regular-text" <?php disabled( defined('SENDGRID_TEMPLATE') ); ?>>
             <span><small><em><?php _e('Leave blank to send without template.') ?></em></small></span>
             <p class="description"><?php _e('The template ID used to send emails. <br />
             Example: 0b1240a5-188d-4ea7-93c1-19a7a89466b2.') ?></p>
@@ -116,9 +116,9 @@
                 if ( false != $unsubscribe_groups ) {
                   foreach ( $unsubscribe_groups as $key => $group ) {
                     if ( $unsubscribe_group_id == $group['id'] ) {
-                      echo '<option value="' . $group['id'] . '" selected="selected">' . $group['name'] . '</option>';
+                      echo '<option value="' . esc_attr($group['id']) . '" selected="selected">' . esc_html($group['name']) . '</option>';
                     } else {
-                      echo '<option value="' . $group['id'] . '">' . $group['name'] . '</option>';
+                      echo '<option value="' . esc_attr($group['id']) . '">' . esc_html($group['name']) . '</option>';
                     }
                   }
                 }
@@ -140,7 +140,7 @@
       <tr valign="top">
         <th scope="row"><?php _e("Categories: "); ?></th>
         <td>
-          <input type="text" name="sendgrid_stats_categories" value="<?php echo $stats_categories; ?>" size="20" class="regular-text" <?php disabled( defined('SENDGRID_STATS_CATEGORIES') ); ?>>
+          <input type="text" name="sendgrid_stats_categories" value="<?php echo esc_attr($stats_categories); ?>" size="20" class="regular-text" <?php disabled( defined('SENDGRID_STATS_CATEGORIES') ); ?>>
           <span><small><em><?php _e('Leave blank for not showing category stats.') ?></em></small></span>
           <p class="description"><?php _e('Add some categories for which you would like to see your stats. <br />
           Categories must be separated by commas (Example: category1,category2).') ?></p>
