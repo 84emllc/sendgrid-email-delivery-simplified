@@ -315,6 +315,10 @@ The value is in seconds, this means that API requests will wait 10 seconds for a
 
 == Changelog ==
 
+= 1.11.9 =
+* Plugin forked by 84EM.
+* Security: ensure only an admin can export statistics
+* Security: XSS fixes in settings
 = 1.11.8 =
 * Updated the plugin description to direct users to support.sendgrid.com for questions.
 * Updated the "tested up to" field to confirm the latest version of the plugin wordes with the latest version of wordpress.

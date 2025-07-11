@@ -21,18 +21,18 @@
   ?>
 
   <?php if ( isset( $status ) and ( 'updated' == $status or 'error' == $status or 'notice notice-warning' == $status ) ): ?>
-    <div id="message" class="<?php echo $status ?>">
+    <div id="message" class="<?php echo esc_attr($status) ?>">
       <p>
-        <strong><?php echo $message ?></strong>
+        <strong><?php echo esc_html($message) ?></strong>
       </p>
     </div>
   <?php endif; ?>
 
    <?php if ( isset( $warning_status ) and isset( $warning_message ) ): ?>
     <?php if ( ! isset( $warning_exclude_tab ) or $warning_exclude_tab != $active_tab ): ?>
-      <div id="message" class="<?php echo $warning_status ?>">
+      <div id="message" class="<?php echo esc_attr($warning_status) ?>">
         <p>
-          <strong><?php echo $warning_message ?></strong>
+          <strong><?php echo esc_html($warning_message) ?></strong>
         </p>
       </div>
     <?php endif; ?>
