@@ -161,6 +161,10 @@ class Sendgrid_Statistics
       die( 'Permissions check failed' );
     }
 
+	if( ! current_user_can('manage_options')) {
+		die( 'Permissions check failed' );
+	}
+
     $parameters = array();
     $parameters['apikey']   = Sendgrid_Tools::get_api_key();
     $parameters['data_type'] = 'global';
