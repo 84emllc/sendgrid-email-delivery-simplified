@@ -27,7 +27,7 @@
 
 <p class="sendgrid-multisite-pagination">
     <?php
-       echo $pagination['previous_button'] . ' ' . $pagination['next_button'];
+       echo wp_kses_post($pagination['previous_button']) . ' ' . wp_kses_post($pagination['next_button']);
     ?>
 </p>
 
@@ -37,7 +37,7 @@
         <tr valign="top">
             <th scope="col" class="manage-column column-columnname num" colspan="5">
                 <?php
-                    echo translate( 'Page ' ) . $pagination['current_page'] . translate( ' of ' ) . $pagination['total_pages'];
+                    echo translate( 'Page ' ) . esc_html($pagination['current_page']) . translate( ' of ' ) . esc_html($pagination['total_pages']);
                 ?>
             </th>
         </tr>
@@ -54,14 +54,14 @@
             <?php if ( ! is_main_site( $site->blog_id ) ): ?>
                 <?php $site_info = get_blog_details ($site->blog_id ); ?>
                     <tr <?php echo ( $index % 2 == 1 ) ? 'class="alternate"' : ''?>>
-                        <td class="column-columnname num" scope="row"><?php echo $site_info->blog_id; ?></td>
-                        <td class="column-columnname" scope="row"><?php echo $site_info->blogname; ?></td>
+                        <td class="column-columnname num" scope="row"><?php echo esc_html($site_info->blog_id); ?></td>
+                        <td class="column-columnname" scope="row"><?php echo esc_html($site_info->blogname); ?></td>
                         <td class="column-columnname" scope="row"><?php echo $site_info->public ? "true" : "false"; ?></td>
                         <td class="column-columnname" scope="row">
-                            <a href="<?php echo $site_info->siteurl; ?>"><?php echo $site_info->siteurl; ?><a>
+                            <a href="<?php echo esc_url($site_info->siteurl); ?>"><?php echo esc_html($site_info->siteurl); ?><a>
                         </td>
                         <td class="column-columnname" scope="row" aligh="center">
-                            <input type="checkbox" id="check-can-manage-sg" name="checked_sites[<?php echo $site_info->blog_id ?>]"
+                            <input type="checkbox" id="check-can-manage-sg" name="checked_sites[<?php echo esc_attr($site_info->blog_id) ?>]"
                                 <?php echo ( get_blog_option( $site_info->blog_id, 'sendgrid_can_manage_subsite', 0 ) ? "checked" : "" ) ?> />
                         </td>
                     </tr>
@@ -71,7 +71,7 @@
 </table>
 <p class="sendgrid-multisite-pagination">
     <?php
-        echo $pagination['previous_button'] . ' ' . $pagination['next_button'];
+        echo wp_kses_post($pagination['previous_button']) . ' ' . wp_kses_post($pagination['next_button']);
     ?>
 </p>
 <p class="sendgrid-multisite-submit">
